@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  corrosion:
+    build: .
+    ports:
+      - 8888:8888
+    volumes:
+      - ./dataset/:/app/dataset
+      - ./checkpoints/:/app/checkpoints
+      - ./weights/:/app/weights
+      - ./notebooks/:/app/notebooks
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
